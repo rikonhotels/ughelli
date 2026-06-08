@@ -130,15 +130,15 @@
     <!-- Hero Banner with Slideshow Background -->
     <header class="relative h-[85vh] flex items-center bg-stone-950 overflow-hidden" id="hero-slider-container">
         <!-- Slide 1 -->
-        <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] opacity-100 z-0 bg-slide" style="background-image: url('./images/hero_building.jpg'), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1600&auto=format&fit=crop'); animate: pulse 12s infinite"></div>
+        <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] opacity-100 z-0 bg-slide" style="background-image: url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=70&w=1200&auto=format&fit=crop'); animate: pulse 12s infinite"></div>
         <!-- Slide 2 -->
-        <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] opacity-0 z-0 bg-slide" style="background-image: url('./images/front_main_view.jpg'), url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=1600&auto=format&fit=crop');"></div>
+        <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] opacity-0 z-0 bg-slide" style="background-image: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=70&w=1200&auto=format&fit=crop');"></div>
         <!-- Slide 3 -->
-        <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] opacity-0 z-0 bg-slide" style="background-image: url('./images/front_yard_lobby.jpg'), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1600&auto=format&fit=crop');"></div>
+        <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] opacity-0 z-0 bg-slide" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=70&w=1200&auto=format&fit=crop');"></div>
         <!-- Slide 4 -->
-        <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] opacity-0 z-0 bg-slide" style="background-image: url('./images/building_angled_front.jpg'), url('https://images.unsplash.com/photo-1451976426598-a7593bd6d0b2?q=80&w=1600&auto=format&fit=crop');"></div>
+        <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] opacity-0 z-0 bg-slide" style="background-image: url('https://images.unsplash.com/photo-1451976426598-a7593bd6d0b2?q=70&w=1200&auto=format&fit=crop');"></div>
         <!-- Slide 5 -->
-        <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] opacity-0 z-0 bg-slide" style="background-image: url('./images/courtyard_garden.jpg'), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1600&auto=format&fit=crop');"></div>
+        <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] opacity-0 z-0 bg-slide" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=70&w=1200&auto=format&fit=crop');"></div>
         
         <div class="absolute inset-0 bg-black/60 z-10"></div>
         
@@ -161,28 +161,29 @@
         </div>
     </header>
 
+    <main id="main-content">
     <!-- Reservation Block Form -->
     <section id="reservation" class="bg-white border-b border-stone-200 relative z-30 py-8 lg:py-12 shadow-md">
         <div class="max-w-7xl mx-auto px-6">
             <form onsubmit="event.preventDefault(); document.getElementById('booking-form').scrollIntoView({behavior: 'smooth'});" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 items-end">
                 <div>
-                    <label class="block text-[10px] font-bold tracking-widest text-stone-500 uppercase mb-2">REGION</label>
-                    <select class="w-full bg-stone-50 border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-gold-500 text-sm rounded">
+                    <label for="reservation-region" class="block text-[10px] font-bold tracking-widest text-stone-500 uppercase mb-2">REGION</label>
+                    <select id="reservation-region" class="w-full bg-stone-50 border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-gold-500 text-sm rounded">
                         <option value="delta" selected>Delta State</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-[10px] font-bold tracking-widest text-stone-500 uppercase mb-2">HOTEL</label>
-                    <select class="w-full bg-stone-50 border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-gold-500 text-sm rounded">
+                    <label for="reservation-hotel" class="block text-[10px] font-bold tracking-widest text-stone-500 uppercase mb-2">HOTEL</label>
+                    <select id="reservation-hotel" class="w-full bg-stone-50 border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-gold-500 text-sm rounded">
                         <option value="current">Rikon Hotels</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-[10px] font-bold tracking-widest text-stone-500 uppercase mb-2">ARRIVAL</label>
+                    <label for="init-checkin" class="block text-[10px] font-bold tracking-widest text-stone-500 uppercase mb-2">ARRIVAL</label>
                     <input type="date" id="init-checkin" class="w-full bg-stone-50 border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-gold-500 text-sm rounded font-mono" value="2026-06-08">
                 </div>
                 <div>
-                    <label class="block text-[10px] font-bold tracking-widest text-stone-500 uppercase mb-2">DEPARTURE</label>
+                    <label for="init-checkout" class="block text-[10px] font-bold tracking-widest text-stone-500 uppercase mb-2">DEPARTURE</label>
                     <input type="date" id="init-checkout" class="w-full bg-stone-50 border border-stone-200 px-4 py-3 text-stone-700 focus:outline-none focus:border-gold-500 text-sm rounded font-mono" value="2026-06-15">
                 </div>
                 <div>
@@ -199,7 +200,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="relative">
-                    <img class="rounded-lg shadow-2xl relative z-10 w-full object-cover h-[450px]" src="./images/front_yard_lobby.jpg" onerror="this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&auto=format&fit=crop'" alt="Rikon Hotels Entrance">
+                    <img class="rounded-lg shadow-2xl relative z-10 w-full object-cover h-[450px]" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=70&w=800" loading="lazy" alt="Rikon Hotels Entrance">
                     <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-gold-100 rounded-lg -z-0 hidden sm:block"></div>
                     <div class="absolute -top-6 -left-6 w-32 h-32 border-l-2 border-t-2 border-gold-500 -z-0 hidden sm:block"></div>
                 </div>
@@ -255,7 +256,7 @@
                 <!-- Studio Room -->
                 <div class="bg-stone-50 rounded-lg overflow-hidden border border-stone-100 hover:shadow-xl transition duration-300 flex flex-col">
                     <div class="h-64 bg-stone-200 overflow-hidden relative">
-                        <img class="w-full h-full object-cover hover:scale-105 transition duration-500" src="./images/bedroom_cozy_gold.jpg" onerror="this.src='https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=800&auto=format&fit=crop'" alt="Studio Room">
+                        <img class="w-full h-full object-cover hover:scale-105 transition duration-500" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=70&w=600" loading="lazy" alt="Studio Room">
                         <div class="absolute top-4 right-4 bg-stone-900/80 backdrop-blur text-gold-400 px-3 py-1 text-xs font-bold rounded">STUDIO</div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
@@ -273,7 +274,7 @@
                 <!-- Double Room -->
                 <div class="bg-stone-50 rounded-lg overflow-hidden border border-stone-100 hover:shadow-xl transition duration-300 flex flex-col">
                     <div class="h-64 bg-stone-200 overflow-hidden relative">
-                        <img class="w-full h-full object-cover hover:scale-105 transition duration-500" src="./images/bedroom_monochrome_panels.jpg" onerror="this.src='https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=800&auto=format&fit=crop'" alt="Executive Suite">
+                        <img class="w-full h-full object-cover hover:scale-105 transition duration-500" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=70&w=600" loading="lazy" alt="Executive Suite">
                         <div class="absolute top-4 right-4 bg-stone-900/80 backdrop-blur text-gold-400 px-3 py-1 text-xs font-bold rounded">EXECUTIVE</div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
@@ -291,7 +292,7 @@
                 <!-- Self Catering Suite -->
                 <div class="bg-stone-50 rounded-lg overflow-hidden border border-stone-100 hover:shadow-xl transition duration-300 flex flex-col">
                     <div class="h-64 bg-stone-200 overflow-hidden relative">
-                        <img class="w-full h-full object-cover hover:scale-105 transition duration-500" src="./images/wedding_banquet_hall.jpg" onerror="this.src='https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop'" alt="Self-Catering Suite">
+                        <img class="w-full h-full object-cover hover:scale-105 transition duration-500" src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=70&w=600" loading="lazy" alt="Self-Catering Suite">
                         <div class="absolute top-4 right-4 bg-stone-900/80 backdrop-blur text-gold-400 px-3 py-1 text-xs font-bold rounded">SUITE (SELF-CATERING)</div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
@@ -367,7 +368,7 @@
                 </div>
 
                 <div class="relative">
-                    <img class="rounded-lg shadow-2xl relative z-10 w-full object-cover h-[450px]" src="./images/front_main_view.jpg" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=800&auto=format&fit=crop'" alt="Hotel Exterior Facilities">
+                    <img class="rounded-lg shadow-2xl relative z-10 w-full object-cover h-[450px]" src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=70&w=800" loading="lazy" alt="Hotel Exterior Facilities">
                     <div class="absolute -bottom-6 -left-6 w-32 h-32 border-l-2 border-b-2 border-gold-500 -z-0"></div>
                 </div>
             </div>
@@ -387,7 +388,7 @@
                 <!-- Stay -->
                 <div class="group relative h-96 rounded-lg overflow-hidden shadow-md">
                     <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/40 to-transparent z-10"></div>
-                    <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500" src="./images/bedroom_cozy_gold.jpg" onerror="this.src='https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=800&auto=format&fit=crop'" alt="Stay">
+                    <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500" src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=70&w=400" loading="lazy" alt="Stay">
                     <div class="absolute inset-x-6 bottom-6 z-20 text-white space-y-2">
                         <h3 class="font-serif text-xl">Stay</h3>
                         <p class="text-xs text-stone-300 font-light">From studios to a grand self-catering suite, we have the perfect accommodation options built for you.</p>
@@ -397,7 +398,7 @@
                 <!-- Play -->
                 <div class="group relative h-96 rounded-lg overflow-hidden shadow-md">
                     <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/40 to-transparent z-10"></div>
-                    <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500" src="./images/courtyard_garden.jpg" onerror="this.src='https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop'" alt="Play">
+                    <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=70&w=400" loading="lazy" alt="Play">
                     <div class="absolute inset-x-6 bottom-6 z-20 text-white space-y-2">
                         <h3 class="font-serif text-xl">Play</h3>
                         <p class="text-xs text-stone-300 font-light">Cool down near our protected pool, stroll through garden courtyard pathways, or enjoy cocktails under the palms.</p>
@@ -407,7 +408,7 @@
                 <!-- Eat -->
                 <div class="group relative h-96 rounded-lg overflow-hidden shadow-md">
                     <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/40 to-transparent z-10"></div>
-                    <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500" src="./images/building_angled_front.jpg" onerror="this.src='https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=800&auto=format&fit=crop'" alt="Eat">
+                    <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500" src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=70&w=400" loading="lazy" alt="Eat">
                     <div class="absolute inset-x-6 bottom-6 z-20 text-white space-y-2">
                         <h3 class="font-serif text-xl">Eat</h3>
                         <p class="text-xs text-stone-300 font-light">Savor traditional gourmet Nigerian recipes or order dynamic international cuisine from our open kitchen.</p>
@@ -417,7 +418,7 @@
                 <!-- Meet -->
                 <div class="group relative h-96 rounded-lg overflow-hidden shadow-md">
                     <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/40 to-transparent z-10"></div>
-                    <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500" src="./images/wedding_banquet_hall.jpg" onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800&auto=format&fit=crop'" alt="Meet">
+                    <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500" src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=70&w=400" loading="lazy" alt="Meet">
                     <div class="absolute inset-x-6 bottom-6 z-20 text-white space-y-2">
                         <h3 class="font-serif text-xl">Meet</h3>
                         <p class="text-xs text-stone-300 font-light">We host gorgeous corporate groups or magnificent wedding banquets holding up to 350 seated guests.</p>
@@ -439,28 +440,28 @@
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="rounded overflow-hidden shadow">
-                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="./images/hero_building.jpg" onerror="this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=600&auto=format&fit=crop'" alt="Main Building Exterior">
+                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=70&w=400" loading="lazy" alt="Main Building Exterior">
                 </div>
                 <div class="rounded overflow-hidden shadow">
-                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="./images/front_main_view.jpg" onerror="this.src='https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=600&auto=format&fit=crop'" alt="Hotel Side View">
+                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=70&w=400" loading="lazy" alt="Hotel Side View">
                 </div>
                 <div class="rounded overflow-hidden shadow">
-                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="./images/bedroom_cozy_gold.jpg" onerror="this.src='https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=600&auto=format&fit=crop'" alt="Bed Suite Type 1">
+                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=70&w=400" loading="lazy" alt="Bed Suite Type 1">
                 </div>
                 <div class="rounded overflow-hidden shadow">
-                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="./images/bedroom_monochrome_panels.jpg" onerror="this.src='https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=600&auto=format&fit=crop'" alt="Bed Suite Type 2">
+                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=70&w=400" loading="lazy" alt="Bed Suite Type 2">
                 </div>
                 <div class="rounded overflow-hidden shadow">
-                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="./images/wedding_banquet_hall.jpg" onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=600&auto=format&fit=crop'" alt="Event Banquet Hall">
+                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=70&w=400" loading="lazy" alt="Event Banquet Hall">
                 </div>
                 <div class="rounded overflow-hidden shadow">
-                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="./images/front_yard_lobby.jpg" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=600&auto=format&fit=crop'" alt="Reception & Entrance">
+                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=70&w=400" loading="lazy" alt="Reception & Entrance">
                 </div>
                 <div class="rounded overflow-hidden shadow">
-                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="./images/building_angled_front.jpg" onerror="this.src='https://images.unsplash.com/photo-1451976426598-a7593bd6d0b2?q=80&w=600&auto=format&fit=crop'" alt="Hotel Front Compound">
+                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="https://images.unsplash.com/photo-1451976426598-a7593bd6d0b2?auto=format&fit=crop&q=70&w=400" loading="lazy" alt="Hotel Front Compound">
                 </div>
                 <div class="rounded overflow-hidden shadow">
-                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="./images/courtyard_garden.jpg" onerror="this.src='https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600&auto=format&fit=crop'" alt="Courtyard Garden">
+                    <img class="w-full h-48 object-cover hover:scale-105 transition duration-300" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=70&w=400" loading="lazy" alt="Courtyard Garden">
                 </div>
             </div>
             
@@ -491,28 +492,28 @@
                     <div class="space-y-4 text-xs">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5">Full Name</label>
+                                <label for="booking_name" class="block text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5">Full Name</label>
                                 <input type="text" id="booking_name" required placeholder="e.g. Chief Benson Onome" class="w-full bg-stone-50 border border-stone-200 px-3.5 py-2.5 text-stone-800 rounded outline-none focus:border-gold-500 focus:bg-white transition">
                             </div>
                             <div>
-                                <label class="block text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5">Phone Number (WhatsApp Preferred)</label>
+                                <label for="booking_phone" class="block text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5">Phone Number (WhatsApp Preferred)</label>
                                 <input type="tel" id="booking_phone" required placeholder="e.g. 08037904052" class="w-full bg-stone-50 border border-stone-200 px-3.5 py-2.5 text-stone-800 rounded outline-none focus:border-gold-500 focus:bg-white transition font-mono">
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5">Check-In Arrival</label>
+                                <label for="booking_checkin" class="block text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5">Check-In Arrival</label>
                                 <input type="date" id="booking_checkin" value="2026-06-08" required onchange="calculateNights();" class="w-full bg-stone-50 border border-stone-200 px-3.5 py-2.5 text-stone-800 rounded outline-none focus:border-gold-500 focus:bg-white transition font-mono">
                             </div>
                             <div>
-                                <label class="block text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5">Check-Out Departure</label>
+                                <label for="booking_checkout" class="block text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5">Check-Out Departure</label>
                                 <input type="date" id="booking_checkout" value="2026-06-15" required onchange="calculateNights();" class="w-full bg-stone-50 border border-stone-200 px-3.5 py-2.5 text-stone-800 rounded outline-none focus:border-gold-500 focus:bg-white transition font-mono">
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5">Email Contact</label>
+                            <label for="booking_email" class="block text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5">Email Contact</label>
                             <input type="email" id="booking_email" required placeholder="e.g. guest@domain.com" class="w-full bg-stone-50 border border-stone-200 px-3.5 py-2.5 text-stone-800 rounded outline-none focus:border-gold-500 focus:bg-white transition">
                         </div>
                     </div>
@@ -522,10 +523,10 @@
                     <div class="space-y-3 text-xs">
                         <!-- Standard Option -->
                         <label class="block cursor-pointer">
-                            <input type="radio" name="room_selection" value="standard" checked onchange="updateRoomSelection();" class="sr-only peer">
+                            <input type="radio" id="room_select_standard" name="room_selection" value="standard" checked onchange="updateRoomSelection();" aria-label="Select Standard Cozy Room" class="sr-only peer">
                             <div class="p-4 rounded-lg bg-stone-50 border border-stone-200 peer-checked:bg-gold-50/40 peer-checked:border-gold-500 flex items-center justify-between hover:bg-stone-100/50 transition duration-200">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 rounded bg-cover bg-center hidden sm:block" style="background-image: url('./images/bedroom_cozy_gold.jpg'), url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=150');"></div>
+                                    <div class="w-12 h-12 rounded bg-cover bg-center hidden sm:block" style="background-image: url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=70&w=150');" aria-hidden="true"></div>
                                     <div>
                                         <span class="block font-serif text-sm text-stone-900 font-bold">Standard Cozy Room</span>
                                         <span class="block text-[10px] text-stone-500">Premium double-bed setup, modern bathroom</span>
@@ -537,10 +538,10 @@
 
                         <!-- Executive Option -->
                         <label class="block cursor-pointer">
-                            <input type="radio" name="room_selection" value="executive" onchange="updateRoomSelection();" class="sr-only peer">
+                            <input type="radio" id="room_select_executive" name="room_selection" value="executive" onchange="updateRoomSelection();" aria-label="Select Executive Luxury Room" class="sr-only peer">
                             <div class="p-4 rounded-lg bg-stone-50 border border-stone-200 peer-checked:bg-gold-50/40 peer-checked:border-gold-500 flex items-center justify-between hover:bg-stone-100/50 transition duration-200">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 rounded bg-cover bg-center hidden sm:block" style="background-image: url('./images/bedroom_monochrome_panels.jpg'), url('https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=150');"></div>
+                                    <div class="w-12 h-12 rounded bg-cover bg-center hidden sm:block" style="background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=70&w=150');" aria-hidden="true"></div>
                                     <div>
                                         <span class="block font-serif text-sm text-stone-900 font-bold">Executive Luxury Room</span>
                                         <span class="block text-[10px] text-stone-500">Exquisite headboards, scenic overlook, soft bedding</span>
@@ -552,10 +553,10 @@
 
                         <!-- Royal Option -->
                         <label class="block cursor-pointer">
-                            <input type="radio" name="room_selection" value="premium" onchange="updateRoomSelection();" class="sr-only peer">
+                            <input type="radio" id="room_select_premium" name="room_selection" value="premium" onchange="updateRoomSelection();" aria-label="Select Bespoke Grand Suite" class="sr-only peer">
                             <div class="p-4 rounded-lg bg-stone-50 border border-stone-200 peer-checked:bg-gold-50/40 peer-checked:border-gold-500 flex items-center justify-between hover:bg-stone-100/50 transition duration-200">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 rounded bg-cover bg-center hidden sm:block" style="background-image: url('./images/wedding_banquet_hall.jpg'), url('https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=150');"></div>
+                                    <div class="w-12 h-12 rounded bg-cover bg-center hidden sm:block" style="background-image: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=70&w=150');" aria-hidden="true"></div>
                                     <div>
                                         <span class="block font-serif text-sm text-stone-900 font-bold">Bespoke Grand Suite</span>
                                         <span class="block text-[10px] text-stone-500">Private kitchen, master parlor lounges</span>
@@ -834,8 +835,9 @@
 
     <!-- Google Map Container Embed -->
     <div class="h-96 w-full">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.2185521045!2d5.952044!3d5.498765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10411a123f123fd%3A0x46ef1234abcd8fa9!2sUghelli%2C%20Delta!5e0!3m2!1sen!2sng!4v1755777436024!5m2!1sen!2sng" class="w-full h-full border-0 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition duration-500" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.2185521045!2d5.952044!3d5.498765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10411a123f123fd%3A0x46ef1234abcd8fa9!2sUghelli%2C%20Delta!5e0!3m2!1sen!2sng!4v1755777436024!5m2!1sen!2sng" title="Google Maps Location of Rikon Hotels" class="w-full h-full border-0 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition duration-500" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
+    </main>
 
     <!-- Sticky Floating Action Buttons -->
     <a href="https://wa.me/2348037904052?text=Hello%20Rikon%20Hotels%2C%20I%20would%20like%20to%20make%20a%20booking%20inquiry." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition duration-300" title="Contact on WhatsApp">
