@@ -121,7 +121,7 @@
                 <a href="#contact" class="hover:text-gold-500 transition">CONTACT</a>
             </div>
 
-            <a href="#reservation" class="bg-gold-500 hover:bg-gold-600 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider text-white transition shadow-lg shadow-gold-500/10">
+            <a href="#booking-form" class="bg-gold-500 hover:bg-gold-600 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider text-white transition shadow-lg shadow-gold-500/10">
                 BOOK NOW
             </a>
         </div>
@@ -467,6 +467,322 @@
             <p class="text-center text-xs text-stone-500 mt-6 font-mono">Note: For local folder deployment on GitHub, ensure you create an 'images/' directory and copy matching JPEG assets.</p>
         </div>
     </section>
+
+    <!-- Interactive Booking Hub & Payment Details Page -->
+    <section id="booking-form" class="py-20 lg:py-32 bg-stone-50 border-b border-stone-200 scroll-mt-20">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold tracking-widest text-gold-500 uppercase">SECURE YOUR STAY</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-stone-900 font-normal">Online Booking & Reservation</h2>
+                <div class="w-16 h-px bg-gold-400 mx-auto"></div>
+                <p class="text-stone-600 text-sm">Select dates, choose your preferred room layout, and select your preferred booking channel (WhatsApp or secure offline Bank Transfer).</p>
+            </div>
+
+            <!-- Booking Form Container -->
+            <div class="bg-white rounded-xl border border-stone-250/60 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+                
+                <!-- Left Details Form -->
+                <form id="hotel-booking-form" onsubmit="handleFormSubmission(event);" class="lg:col-span-7 p-8 sm:p-10 space-y-6">
+                    <h3 class="font-serif text-lg text-stone-900 border-b border-stone-100 pb-3 flex items-center justify-between">
+                        <span>1. Guest & Date Details</span>
+                        <span class="text-[10px] uppercase font-mono bg-gold-50 text-gold-600 px-2 py-0.5 rounded">Rikon Ughelli</span>
+                    </h3>
+                    
+                    <div class="space-y-4 text-xs">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5">Full Name</label>
+                                <input type="text" id="booking_name" required placeholder="e.g. Chief Benson Onome" class="w-full bg-stone-50 border border-stone-200 px-3.5 py-2.5 text-stone-800 rounded outline-none focus:border-gold-500 focus:bg-white transition">
+                            </div>
+                            <div>
+                                <label class="block text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5">Phone Number (WhatsApp Preferred)</label>
+                                <input type="tel" id="booking_phone" required placeholder="e.g. 08037904052" class="w-full bg-stone-50 border border-stone-200 px-3.5 py-2.5 text-stone-800 rounded outline-none focus:border-gold-500 focus:bg-white transition font-mono">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5">Check-In Arrival</label>
+                                <input type="date" id="booking_checkin" value="2026-06-08" required onchange="calculateNights();" class="w-full bg-stone-50 border border-stone-200 px-3.5 py-2.5 text-stone-800 rounded outline-none focus:border-gold-500 focus:bg-white transition font-mono">
+                            </div>
+                            <div>
+                                <label class="block text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5">Check-Out Departure</label>
+                                <input type="date" id="booking_checkout" value="2026-06-15" required onchange="calculateNights();" class="w-full bg-stone-50 border border-stone-200 px-3.5 py-2.5 text-stone-800 rounded outline-none focus:border-gold-500 focus:bg-white transition font-mono">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5">Email Contact</label>
+                            <input type="email" id="booking_email" required placeholder="e.g. guest@domain.com" class="w-full bg-stone-50 border border-stone-200 px-3.5 py-2.5 text-stone-800 rounded outline-none focus:border-gold-500 focus:bg-white transition">
+                        </div>
+                    </div>
+
+                    <h3 class="font-serif text-lg text-stone-900 border-b border-stone-100 pt-4 pb-3">2. Select Your Luxury Suite</h3>
+                    
+                    <div class="space-y-3 text-xs">
+                        <!-- Standard Option -->
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="room_selection" value="standard" checked onchange="updateRoomSelection();" class="sr-only peer">
+                            <div class="p-4 rounded-lg bg-stone-50 border border-stone-200 peer-checked:bg-gold-50/40 peer-checked:border-gold-500 flex items-center justify-between hover:bg-stone-100/50 transition duration-200">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded bg-cover bg-center hidden sm:block" style="background-image: url('./images/bedroom_cozy_gold.jpg'), url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=150');"></div>
+                                    <div>
+                                        <span class="block font-serif text-sm text-stone-900 font-bold">Standard Cozy Room</span>
+                                        <span class="block text-[10px] text-stone-500">Premium double-bed setup, modern bathroom</span>
+                                    </div>
+                                </div>
+                                <span class="font-mono font-bold text-gold-600 text-sm whitespace-nowrap">N25,000 / night</span>
+                            </div>
+                        </label>
+
+                        <!-- Executive Option -->
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="room_selection" value="executive" onchange="updateRoomSelection();" class="sr-only peer">
+                            <div class="p-4 rounded-lg bg-stone-50 border border-stone-200 peer-checked:bg-gold-50/40 peer-checked:border-gold-500 flex items-center justify-between hover:bg-stone-100/50 transition duration-200">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded bg-cover bg-center hidden sm:block" style="background-image: url('./images/bedroom_monochrome_panels.jpg'), url('https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=150');"></div>
+                                    <div>
+                                        <span class="block font-serif text-sm text-stone-900 font-bold">Executive Luxury Room</span>
+                                        <span class="block text-[10px] text-stone-500">Exquisite headboards, scenic overlook, soft bedding</span>
+                                    </div>
+                                </div>
+                                <span class="font-mono font-bold text-gold-600 text-sm whitespace-nowrap">N40,000 / night</span>
+                            </div>
+                        </label>
+
+                        <!-- Royal Option -->
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="room_selection" value="premium" onchange="updateRoomSelection();" class="sr-only peer">
+                            <div class="p-4 rounded-lg bg-stone-50 border border-stone-200 peer-checked:bg-gold-50/40 peer-checked:border-gold-500 flex items-center justify-between hover:bg-stone-100/50 transition duration-200">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded bg-cover bg-center hidden sm:block" style="background-image: url('./images/wedding_banquet_hall.jpg'), url('https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=150');"></div>
+                                    <div>
+                                        <span class="block font-serif text-sm text-stone-900 font-bold">Bespoke Grand Suite</span>
+                                        <span class="block text-[10px] text-stone-500">Private kitchen, master parlor lounges</span>
+                                    </div>
+                                </div>
+                                <span class="font-mono font-bold text-gold-600 text-sm whitespace-nowrap">N75,000 / night</span>
+                            </div>
+                        </label>
+                    </div>
+                </form>
+
+                <!-- Right Invoice / Payment Action Options Panel -->
+                <div class="lg:col-span-5 bg-stone-900 text-white p-8 sm:p-10 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-stone-800">
+                    <div class="space-y-6">
+                        <div class="border-b border-stone-800 pb-4">
+                            <span class="text-[9px] font-mono tracking-widest text-gold-500 font-bold uppercase">RESERVATION SUMMARY</span>
+                            <h4 id="calc_days_summary" class="font-serif text-lg font-normal text-stone-100 mt-1">
+                                Standard Cozy Room × 7 Nights
+                            </h4>
+                            <p class="text-[10px] text-stone-400 font-mono mt-0.5">Calculation: <span id="calc_days_math">7 nights @ N25,000 NGN</span></p>
+                        </div>
+
+                        <!-- Real-time Cost Calculation Display -->
+                        <div class="space-y-2 text-xs">
+                            <div class="flex justify-between">
+                                <span class="text-stone-400">Lodging Subtotal:</span>
+                                <span id="summary_subtotal" class="font-mono text-stone-200">N175,000</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-stone-400">Guaranteed Backup Power & Security:</span>
+                                <span class="font-mono text-emerald-400 uppercase tracking-widest text-[9px] font-bold">Included Free</span>
+                            </div>
+                            <div class="flex justify-between pt-3 border-t border-stone-800">
+                                <span class="text-stone-200 font-semibold">Total Invoice Amount:</span>
+                                <span id="summary_total" class="font-mono text-gold-400 font-bold text-base">N175,000</span>
+                            </div>
+                        </div>
+
+                        <!-- 3. BOOK NOW & PAYMENT GATE CHANNELS -->
+                        <div class="space-y-4 pt-4 border-t border-stone-800">
+                            <div>
+                                <label class="block text-[9px] font-bold text-gold-400 uppercase tracking-widest mb-2">3. CHOOSE CONFIRMATION ROUTE</label>
+                                <div class="grid grid-cols-2 gap-2 text-[10px]">
+                                    <button type="button" id="btn-pay-whatsapp" onclick="togglePaymentRoute('whatsapp');" class="bg-emerald-500 hover:bg-emerald-600 px-3 py-2.5 rounded font-bold text-center block text-white transition leading-tight shadow-md shadow-emerald-950/20 border border-emerald-400/20">
+                                        ⚡ Direct Chat<br>Instant WhatsApp
+                                    </button>
+                                    <button type="button" id="btn-pay-bank" onclick="togglePaymentRoute('bank');" class="bg-stone-800 hover:bg-stone-700 px-3 py-2.5 rounded font-bold text-center block text-stone-200 transition leading-tight border border-stone-700">
+                                        🏦 Bank Transfer<br>Payment Details
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Channel A: Direct WhatsApp Messaging Info placeholder -->
+                            <div id="route-whatsapp-panel" class="bg-stone-950/60 p-4 rounded-lg border border-emerald-500/20 space-y-3">
+                                <div class="flex items-start gap-2 text-xs">
+                                    <span class="text-emerald-400 text-sm leading-none mt-0.5">💬</span>
+                                    <div class="space-y-1">
+                                        <h5 class="font-bold text-stone-100">WhatsApp Instant Channel</h5>
+                                        <p class="text-[10px] text-stone-400 leading-relaxed">Your custom booking configuration statement will compile immediately and open inside our priority reservation WhatsApp line for instant securing.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Channel B: Direct Bank Transfer Details -->
+                            <div id="route-bank-panel" class="bg-stone-950/60 p-4 rounded-lg border border-gold-500/15 space-y-3 hidden">
+                                <div class="flex items-start gap-2.5 text-xs">
+                                    <span class="text-gold-400 text-sm leading-none mt-0.5">🏦</span>
+                                    <div class="space-y-1 w-full">
+                                        <h5 class="font-bold text-stone-100">Rikon Corporate Bank Account</h5>
+                                        <p class="text-[10px] text-stone-400 leading-normal">Transfer exact booking total to complete reservation:</p>
+                                        
+                                        <!-- Bank specifics copy block -->
+                                        <div class="bg-stone-900 border border-stone-800 rounded p-2.5 space-y-1 font-mono text-[10px] mt-1.5 text-stone-300">
+                                            <div class="flex justify-between">
+                                                <span>Bank Name:</span>
+                                                <span class="text-white font-bold">Zenith Bank PLC</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span>A/C Name:</span>
+                                                <span class="text-white font-bold leading-none text-right">RIKON HOTELS UGHELLI</span>
+                                            </div>
+                                            <div class="flex justify-between items-center text-gold-400 pt-1 border-t border-stone-800/60">
+                                                <span>A/C Number:</span>
+                                                <span class="text-white font-black tracking-wider text-xs">1228495034</span>
+                                            </div>
+                                        </div>
+                                        <p class="text-[9px] text-gold-400 italic pt-1 leading-normal">⚠️ Copy details, complete transfer, then click the Book Now button to submit your receipt screenshot.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUBMIT BIG BUTTON -->
+                    <div class="pt-6">
+                        <button type="button" onclick="submitFinalBooking();" class="w-full bg-gold-500 hover:bg-gold-600 active:scale-95 text-white py-3.5 px-4 rounded font-serif text-sm font-bold tracking-wider uppercase transition shadow-lg shadow-gold-500/10 flex items-center justify-center gap-2">
+                            <span>Book & Confirm via WhatsApp</span>
+                            <span>⚡</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom JavaScript Booking Scripts & Interactions -->
+    <script>
+        // Preset values for calculation
+        const roomRates = {
+            standard: { name: "Standard Cozy Room", price: 25000 },
+            executive: { name: "Executive Luxury Room", price: 40000 },
+            premium: { name: "Bespoke Grand Suite", price: 75000 }
+        };
+
+        let selectedPaymentRoute = 'whatsapp';
+
+        function togglePaymentRoute(route) {
+            selectedPaymentRoute = route;
+            const btnWa = document.getElementById('btn-pay-whatsapp');
+            const btnBank = document.getElementById('btn-pay-bank');
+            const panelWa = document.getElementById('route-whatsapp-panel');
+            const panelBank = document.getElementById('route-bank-panel');
+
+            if (route === 'whatsapp') {
+                btnWa.className = "bg-emerald-500 hover:bg-emerald-600 px-3 py-2.5 rounded font-bold text-center block text-white transition leading-tight shadow-md shadow-emerald-950/20 border border-emerald-400/20";
+                btnBank.className = "bg-stone-800 hover:bg-stone-700 px-3 py-2.5 rounded font-bold text-center block text-stone-300 transition leading-tight border border-stone-700";
+                panelWa.classList.remove('hidden');
+                panelBank.classList.add('hidden');
+            } else {
+                btnWa.className = "bg-stone-800 hover:bg-stone-700 px-3 py-2.5 rounded font-bold text-center block text-stone-300 transition leading-tight border border-stone-700";
+                btnBank.className = "bg-gold-600 hover:bg-gold-700 px-3 py-2.5 rounded font-bold text-center block text-white transition leading-tight shadow-md border border-gold-500/20";
+                panelWa.classList.add('hidden');
+                panelBank.classList.remove('hidden');
+            }
+        }
+
+        function calculateNights() {
+            const checkinVal = document.getElementById('booking_checkin').value;
+            const checkoutVal = document.getElementById('booking_checkout').value;
+            
+            if (!checkinVal || !checkoutVal) return 7;
+
+            const date1 = new Date(checkinVal);
+            const date2 = new Date(checkoutVal);
+            const differenceMs = date2.getTime() - date1.getTime();
+            let nights = Math.ceil(differenceMs / (1000 * 3600 * 24));
+            
+            if (nights < 1) nights = 1; // Default minimum unit is 1 night
+            updateRoomAndNights(nights);
+            return nights;
+        }
+
+        let currentNights = 7;
+
+        function updateRoomSelection() {
+            calculateNights();
+        }
+
+        function updateRoomAndNights(nights) {
+            currentNights = nights;
+            const selectedRoomType = document.querySelector('input[name="room_selection"]:checked').value;
+            const roomInfo = roomRates[selectedRoomType];
+            
+            const lodgingCost = roomInfo.price * currentNights;
+
+            // Update UI fields
+            document.getElementById('calc_days_summary').innerText = roomInfo.name + " × " + currentNights + " Nights";
+            document.getElementById('calc_days_math').innerText = currentNights + " nights @ N" + roomInfo.price.toLocaleString() + " NGN";
+            document.getElementById('summary_subtotal').innerText = "N" + lodgingCost.toLocaleString();
+            document.getElementById('summary_total').innerText = "N" + lodgingCost.toLocaleString();
+        }
+
+        function submitFinalBooking() {
+            const guestName = document.getElementById('booking_name').value.trim() || "Valued Guest";
+            const guestPhone = document.getElementById('booking_phone').value.trim() || "-";
+            const guestEmail = document.getElementById('booking_email').value.trim() || "-";
+            const checkin = document.getElementById('booking_checkin').value;
+            const checkout = document.getElementById('booking_checkout').value;
+            
+            const selectedRoomType = document.querySelector('input[name="room_selection"]:checked').value;
+            const roomInfo = roomRates[selectedRoomType];
+            const finalTotal = roomInfo.price * currentNights;
+
+            if (!guestName || guestName === "Valued Guest" || !guestPhone || guestPhone === "-") {
+                // Focus guest details section smoothly
+                document.getElementById('booking_name').focus();
+                alert('Please enter your Name and Phone Number to configure your booking inquiry.');
+                return;
+            }
+
+            let message = "Hello Rikon Hotels Ughelli,%0A%0A";
+            message += "I want to confirm my reservation order from your website:%0A";
+            message += "-----------------------------------%0A";
+            message += "*GUEST DETAILS*%0A";
+            message += "Name: " + encodeURIComponent(guestName) + "%0A";
+            message += "Phone: " + encodeURIComponent(guestPhone) + "%0A";
+            message += "Email: " + encodeURIComponent(guestEmail) + "%0A%0A";
+            
+            message += "*ACCOMMODATION DETAILS*%0A";
+            message += "Room Category: " + encodeURIComponent(roomInfo.name) + "%0A";
+            message += "Nights Specified: " + currentNights + " nights%0A";
+            message += "Arrival Date: " + checkin + "%0A";
+            message += "Departure Date: " + checkout + "%0A%0A";
+            
+            message += "*INVOICE TOTAL*%0A";
+            message += "Calculated Cost: N" + finalTotal.toLocaleString() + "%0A";
+            message += "-----------------------------------%0A";
+            
+            if (selectedPaymentRoute === 'bank') {
+                message += "*PAYMENT METHOD*%0A";
+                message += "Chosen Option: Bank Transfer (Zenith Bank)%0A";
+                message += "Payment Status: Transferred. Ready with transaction receipt screenshot.%0A";
+            } else {
+                message += "*PAYMENT DETAILS*%0A";
+                message += "Chosen Option: WhatsApp Direct Invoicing / Reservation Check%0A";
+            }
+
+            const waLink = "https://wa.me/2348037904052?text=" + message;
+            window.open(waLink, '_blank', 'noreferrer');
+        }
+
+        // Auto-initialize standard calculations
+        document.addEventListener("DOMContentLoaded", function() {
+            calculateNights();
+        });
+    </script>
 
     <!-- Testimonials / Guest Feedback and Contact Divided Row -->
     <section id="contact" class="bg-stone-100 border-t border-stone-200 py-20">
